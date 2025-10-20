@@ -86,7 +86,7 @@ Rotate AuthTokens Regularly
 - secrets.toml in the Chainlink node
 - prometheus.yml under the authorization.credentials field
 
-Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
+**Reminder:** Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
 
 ## Metric Glossary
