@@ -45,11 +45,32 @@ Note: The AuthToken is required to access the Chainlink metrics endpoint and mus
 
 ![Demo GIF](./media/Recording.gif)
 
-# Security Tips
-- Restrict access to Prometheus (9090) and Grafana (3000) using firewalls or by binding them to 127.0.0.1
-- Do the same for your Chainlink node’s metrics port (6688)
-- Consider using reverse proxies or VPNs for secure remote access
+# Security Best Practices
 
+Monitoring infrastructure often exposes sensitive metrics and interfaces. To ensure your Chainlink node and observability stack remain secure, follow these best practices:
+ Restrict Metrics Endpoints
+- Bind Prometheus, Grafana, and Chainlink metrics ports to `127.0.0.1` to prevent external access.
+- Alternatively, expose them only through a secure VPN or SSH tunnel.
+- Example for Prometheus:
+  ```bash
+  --web.listen-address=127.0.0.1:9090
+ Use Firewalls or Reverse Proxies
+- Configure firewalls (e.g., ufw, iptables) to block public access to ports 6688, 9090, and 3000.
+- Use reverse proxies like NGINX or Traefik to:
+- Add HTTPS encryption
+- Enforce authentication
+- Rate-limit requests
+Rotate AuthTokens Regularly
+- The Chainlink node’s metrics endpoint requires an AuthToken (defined in secrets.toml) for Prometheus to scrape metrics.
+- Rotate this token periodically and update both:
+- secrets.toml in the Chainlink node
+- prometheus.yml under the authorization.credentials field
+Additional Tips
+- Avoid exposing Prometheus or Grafana dashboards to the public internet.
+- Use Grafana’s built-in user management to enforce strong passwords and role-based access.
+- Monitor access logs for suspicious activity.
+- Keep Prometheus and Grafana updated to patch known vulnerabilities.
+Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
 
 # Metric Glossary
