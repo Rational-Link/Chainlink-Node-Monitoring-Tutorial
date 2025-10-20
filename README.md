@@ -31,10 +31,10 @@ The Grafana dashboard is designed to monitor the following critical metrics:
 To set up Chainlink monitoring, you'll need the following tools:
 - **Prometheus** (default port: `9090`)  
   A powerful open-source monitoring system that collects and stores time-series data. It scrapes metrics from your Chainlink node and other services, making them available for analysis and alerting.
-
 - **Grafana** (default port: `3000`)  
   A flexible visualization platform that connects to Prometheus and displays your metrics through interactive dashboards. It also supports alerting, making it ideal for tracking node health and performance in real time.
 - A running Chainlink node exposing metrics on port 6688
+
 
 ## Prometheus Configuration
 Edit your prometheus.yml file (typically located at /etc/prometheus/prometheus.yml) to include your Chainlink node:
@@ -50,6 +50,7 @@ scrape_configs:
 ```
 Note: The AuthToken is required to access the Chainlink metrics endpoint and must match the value in your node’s secrets.toml.
 
+
 ## Grafana Setup
 - Log in to Grafana (http://localhost:3000) with default credentials admin/admin
 - Change your password
@@ -60,8 +61,8 @@ Note: The AuthToken is required to access the Chainlink metrics endpoint and mus
 
 ![Demo GIF](./media/Recording.gif)
 
-## Security Best Practices
 
+## Security Best Practices
 Monitoring infrastructure often exposes sensitive metrics and interfaces. To ensure your Chainlink node and observability stack remain secure, follow these best practices:
 
 Restrict Metrics Endpoints
