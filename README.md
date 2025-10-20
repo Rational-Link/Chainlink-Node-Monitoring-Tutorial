@@ -6,14 +6,13 @@ This guide outlines how to monitor and alert on key health indicators of a Chain
 # What This Dashboard Tracks
 The Grafana dashboard is designed to monitor the following critical metrics:
 - **ETH Balance**: Alerts when the Chainlink node's Ether balance falls below a defined threshold.
-- **Errored Job Runs**: Tracks failed job executions.
+- **Docker Container Logs**: Observes container output for anomalies.
+- **Errored and Critical Log Runs**: Tracks failed job executions.
 - **Node UI Port Availability**: Detects if the Chainlink node's web interface becomes unresponsive.
 - **Full Node RPC Health**: Monitors HTTP and WebSocket endpoints for responsiveness.
-- **Docker Container Logs**: Observes container output for anomalies.
 - **New Heads Rate**: Alerts if new heads per minute drop below 1 for over 5 minutes — indicating the node isn't receiving updates from Ethereum.
 - **Head Tracker Queue**: Should remain at 0; alerts if it averages above 1 for more than 5 minutes.
 - **Callback Execution Time**: Should stay below 1 second (ideally 100–300ms). Higher averages may indicate RPC or database bottlenecks.
-- **Heads Dropped**: Should be 0. Higher values suggest the node is falling behind in processing new heads.
 
 # Prerequisites
 To set up Chainlink monitoring, you'll need the following tools:
@@ -91,17 +90,19 @@ This section explains key Prometheus metrics exposed by the Chainlink node and w
 | `tx_manager_num_confirmed_transactions` | Total number of transactions successfully confirmed on-chain by the node. |
 | `tx_manager_num_unconfirmed_transactions` | Transactions sent but not yet confirmed. High values may indicate congestion or RPC issues. |
 | `tx_manager_num_replaced_transactions` | Transactions that were replaced due to nonce conflicts or gas price updates. |
-| `job_runs_total` | Total number of job runs executed by the node. Useful for tracking job activity. |
-| `job_runs_errors_total` | Number of job runs that resulted in errors. Helps identify failing jobs. |
+| `evm_pool_rpc_node_calls_failed` | Chainlink metric that tracks the number of failed RPC calls made to EVM-compatible blockchain nodes. |
 | `pipeline_runs_queued` | Number of full job pipelines waiting to start. Indicates job backlog. |
 | `pipeline_task_runs_queued` | Number of individual tasks within pipelines that are queued. Useful for spotting task-level delays. |
 | `gas_updater_all_gas_price_percentiles` | Current gas price percentiles (e.g., 50th, 90th, 99th). Useful for estimating transaction costs. |
 | `pool_rpc_node_polls_success` | Number of successful polling attempts to RPC nodes. Reflects RPC health. |
 | `pool_rpc_node_polls_error` | Number of failed polling attempts to RPC nodes. High values may indicate connectivity issues. |
-| `heads_received_total` | Total number of new block headers received. Indicates sync status with the blockchain. |
-| `heads_dropped_total` | Number of block headers dropped due to processing delays. Should be zero under normal conditions. |
-| `head_tracker_heads_in_queue` | Number of heads waiting to be processed. Should remain near zero. |
-| `head_tracker_callback_execution_time` | Time taken to process each head. Should be well below 1 second (ideally 100–300ms). |
-
-
+| `log_error_count` | Total number of log entries classified as error. These typically indicate recoverable issues like failed job runs, RPC timeouts, or misconfigurations. |
+| `log_critical_count` | Total number of log entries classified as critical. These signal severe problems that may prevent the node from functioning properly — such as database corruption, failed startup, or persistent RPC failures. |
+| `head_tracker_current_head` | Most recent block number that node has received from the blockchain. |
+| `head_tracker_heads_received` | Counts of the total number of block headers received by the node from the blockchain. |
+| `gas_updater_set_gas_price` | The base fee (in wei) that the Chainlink node sets for transactions. Reflects current network congestion and fee market conditions. |
+| `gas_updater_set_tip_cap` | The priority fee (tip) added on top of the base fee to incentivize miners/validators. Helps ensure faster inclusion in blocks. |
+| `process_cpu_seconds_total` | Prometheus metric that tracks the total cumulative CPU time consumed by a process, measured in seconds. |
+| `up` | Prometheus metric that indicates whether a target is reachable. Used to monitor the availability of: Chainlink nod or Prometheus itself. |
+| `health` | Chainlink node metric that reports the internal health status of the node. |
 
