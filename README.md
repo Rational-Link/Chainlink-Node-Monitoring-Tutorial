@@ -83,8 +83,8 @@ Use Firewalls or Reverse Proxies
 Rotate AuthTokens Regularly
 - The Chainlink node’s metrics endpoint requires an AuthToken (defined in secrets.toml) for Prometheus to scrape metrics.
 - Rotate this token periodically and update both:
-- secrets.toml in the Chainlink node
-- prometheus.yml under the authorization.credentials field
+  - secrets.toml in the Chainlink node
+  - prometheus.yml under the authorization.credentials field
 
 **Reminder:** Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
