@@ -3,16 +3,29 @@ This guide outlines how to monitor and alert on key health indicators of a Chain
 
 ![Alt text](./media/Chainlink-Node-Monitoring-Dashboard.png)
 
-# What This Dashboard Tracks
+# Dashboard Monitoring Scope
 The Grafana dashboard is designed to monitor the following critical metrics:
-- **ETH Balance**: Alerts when the Chainlink node's Ether balance falls below a defined threshold.
-- **Docker Container Logs**: Observes container output for anomalies.
-- **Errored and Critical Log Runs**: Tracks failed job executions.
-- **Node UI Port Availability**: Detects if the Chainlink node's web interface becomes unresponsive.
-- **Full Node RPC Health**: Monitors HTTP and WebSocket endpoints for responsiveness.
-- **New Heads Rate**: Alerts if new heads per minute drop below 1 for over 5 minutes — indicating the node isn't receiving updates from Ethereum.
-- **Head Tracker Queue**: Should remain at 0; alerts if it averages above 1 for more than 5 minutes.
-- **Callback Execution Time**: Should stay below 1 second (ideally 100–300ms). Higher averages may indicate RPC or database bottlenecks.
+- **Wallet Balance Monitoring**  
+  Tracks the node’s available Ether to ensure it can pay for gas and continue executing jobs.
+- **Transaction Lifecycle**  
+  Observes confirmed, unconfirmed, and replaced transactions to assess how reliably the node is submitting and finalizing on-chain activity.
+- **RPC Connectivity and Reliability**  
+  Monitors the success and failure rates of RPC calls and connection attempts to ensure stable communication with blockchain nodes.
+- **Job Pipeline Health**  
+  Tracks queued pipelines and tasks to detect bottlenecks or delays in job execution.
+- **Gas Price Behavior**  
+  Visualizes current gas price estimates and priority fee settings to help optimize transaction costs and responsiveness.
+- **Log Severity Tracking**  
+  Counts error and critical log entries to surface operational issues and potential system failures.
+- **Block Sync Status**  
+  Monitors the latest block received, the rate of new blocks, and any dropped headers to ensure the node stays in sync with the chain.
+- **Head Tracker Performance**  
+  Measures queue depth and callback execution time to detect processing delays or resource bottlenecks.
+- **Resource Usage**  
+  Tracks CPU consumption over time to identify performance trends and capacity needs.
+- **Service Availability**  
+  Verifies whether the node and its monitoring stack are reachable and internally healthy.
+
 
 # Prerequisites
 To set up Chainlink monitoring, you'll need the following tools:
