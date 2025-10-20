@@ -5,20 +5,23 @@ This guide outlines how to monitor and alert on key health indicators of a Chain
 
 # What This Dashboard Tracks
 The Grafana dashboard is designed to monitor the following critical metrics:
-- ETH Balance: Alerts when the Chainlink node's Ether balance falls below a defined threshold.
-- Errored Job Runs: Tracks failed job executions.
-- Node UI Port Availability: Detects if the Chainlink node's web interface becomes unresponsive.
-- Full Node RPC Health: Monitors HTTP and WebSocket endpoints for responsiveness.
-- Docker Container Logs: Observes container output for anomalies.
-- New Heads Rate: Alerts if new heads per minute drop below 1 for over 5 minutes — indicating the node isn't receiving updates from Ethereum.
-- Head Tracker Queue: Should remain at 0; alerts if it averages above 1 for more than 5 minutes.
-- Callback Execution Time: Should stay below 1 second (ideally 100–300ms). Higher averages may indicate RPC or database bottlenecks.
-- Heads Dropped: Should be 0. Higher values suggest the node is falling behind in processing new heads.
+- **ETH Balance**: Alerts when the Chainlink node's Ether balance falls below a defined threshold.
+- **Errored Job Runs**: Tracks failed job executions.
+- **Node UI Port Availability**: Detects if the Chainlink node's web interface becomes unresponsive.
+- **Full Node RPC Health**: Monitors HTTP and WebSocket endpoints for responsiveness.
+- **Docker Container Logs**: Observes container output for anomalies.
+- **New Heads Rate**: Alerts if new heads per minute drop below 1 for over 5 minutes — indicating the node isn't receiving updates from Ethereum.
+- **Head Tracker Queue**: Should remain at 0; alerts if it averages above 1 for more than 5 minutes.
+- **Callback Execution Time**: Should stay below 1 second (ideally 100–300ms). Higher averages may indicate RPC or database bottlenecks.
+- **Heads Dropped**: Should be 0. Higher values suggest the node is falling behind in processing new heads.
 
 # Prerequisites
-You’ll need:
-- Prometheus (default port: 9090)
-- Grafana (default port: 3000)
+To set up Chainlink monitoring, you'll need the following tools:
+- **Prometheus** (default port: `9090`)  
+  A powerful open-source monitoring system that collects and stores time-series data. It scrapes metrics from your Chainlink node and other services, making them available for analysis and alerting.
+
+- **Grafana** (default port: `3000`)  
+  A flexible visualization platform that connects to Prometheus and displays your metrics through interactive dashboards. It also supports alerting, making it ideal for tracking node health and performance in real time.
 - A running Chainlink node exposing metrics on port 6688
 
 # Prometheus Configuration
@@ -75,6 +78,7 @@ Additional Tips
 - Use Grafana’s built-in user management to enforce strong passwords and role-based access.
 - Monitor access logs for suspicious activity.
 - Keep Prometheus and Grafana updated to patch known vulnerabilities.
+
 Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
 
