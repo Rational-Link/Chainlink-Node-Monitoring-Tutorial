@@ -1,4 +1,4 @@
-# Chainlink Monitoring & Alerting with Prometheus and Grafana
+# Chainlink Node Monitoring with Prometheus and Grafana
 This guide outlines how to monitor and alert on key health indicators of a Chainlink node using Prometheus and Grafana.
 
 ![Alt text](./media/Chainlink-Node-Monitoring-Dashboard.png)
