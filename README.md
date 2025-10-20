@@ -48,7 +48,8 @@ Note: The AuthToken is required to access the Chainlink metrics endpoint and mus
 # Security Best Practices
 
 Monitoring infrastructure often exposes sensitive metrics and interfaces. To ensure your Chainlink node and observability stack remain secure, follow these best practices:
- Restrict Metrics Endpoints
+
+Restrict Metrics Endpoints
 - Bind Prometheus, Grafana, and Chainlink metrics ports to `127.0.0.1` to prevent external access.
 - Alternatively, expose them only through a secure VPN or SSH tunnel.
 - Example for Prometheus:
