@@ -54,23 +54,27 @@ Monitoring infrastructure often exposes sensitive metrics and interfaces. To ens
 - Example for Prometheus:
   ```bash
   --web.listen-address=127.0.0.1:9090
- Use Firewalls or Reverse Proxies
+  ```
+  
+Use Firewalls or Reverse Proxies
 - Configure firewalls (e.g., ufw, iptables) to block public access to ports 6688, 9090, and 3000.
 - Use reverse proxies like NGINX or Traefik to:
 - Add HTTPS encryption
 - Enforce authentication
 - Rate-limit requests
- Rotate AuthTokens Regularly
+
+Rotate AuthTokens Regularly
 - The Chainlink node’s metrics endpoint requires an AuthToken (defined in secrets.toml) for Prometheus to scrape metrics.
 - Rotate this token periodically and update both:
 - secrets.toml in the Chainlink node
 - prometheus.yml under the authorization.credentials field
- Additional Tips
+
+Additional Tips
 - Avoid exposing Prometheus or Grafana dashboards to the public internet.
 - Use Grafana’s built-in user management to enforce strong passwords and role-based access.
 - Monitor access logs for suspicious activity.
 - Keep Prometheus and Grafana updated to patch known vulnerabilities.
- Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
+Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
 
 # Metric Glossary
