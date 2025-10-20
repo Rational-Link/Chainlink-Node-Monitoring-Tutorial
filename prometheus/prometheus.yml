@@ -1,0 +1,45 @@
+# prometheus.yml
+
+global:
+  scrape_interval: 15s    # Default scrape interval
+  scrape_timeout: 10s     # Timeout for each scrape
+  evaluation_interval: 15s
+
+# Optional: external labels for federation
+# external_labels:
+#   environment: 'production'
+
+scrape_configs:
+  # Monitor Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Monitor Chainlink Node
+  - job_name: 'Chainlink_Node_1'
+    scrape_interval: 5s
+    scrape_timeout: 5s
+    static_configs:
+      - targets: ['localhost:6688']
+    authorization:
+      credentials: 'mysecuretokenforPrometheus'  # Must match secrets.toml in Chainlink node
+
+  # Example: Monitor Geth or other full node
+  #- job_name: 'ethereum_node'
+  #  static_configs:
+  #    - targets: ['localhost:8545']
+
+  # Example: Monitor Docker containers via cAdvisor
+  # - job_name: 'cadvisor'
+  #   static_configs:
+  #     - targets: ['localhost:8080']
+
+# Optional: alerting configuration
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets: ['localhost:9093']
+
+# Optional: rule files for recording or alerting
+# rule_files:
+#   - "alert.rules.yml"

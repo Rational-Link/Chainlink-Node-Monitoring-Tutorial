@@ -74,7 +74,7 @@ Restrict Metrics Endpoints
   
 Use Firewalls or Reverse Proxies
 - Configure firewalls (e.g., ufw, iptables) to block public access to ports 6688, 9090, and 3000.
-- Use reverse proxies like NGINX or Traefik to:
+- Use reverse proxies like NGINX to:
 - Add HTTPS encryption
 - Enforce authentication
 - Rate-limit requests
@@ -84,12 +84,6 @@ Rotate AuthTokens Regularly
 - Rotate this token periodically and update both:
 - secrets.toml in the Chainlink node
 - prometheus.yml under the authorization.credentials field
-
-Additional Tips
-- Avoid exposing Prometheus or Grafana dashboards to the public internet.
-- Use Grafana’s built-in user management to enforce strong passwords and role-based access.
-- Monitor access logs for suspicious activity.
-- Keep Prometheus and Grafana updated to patch known vulnerabilities.
 
 Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
