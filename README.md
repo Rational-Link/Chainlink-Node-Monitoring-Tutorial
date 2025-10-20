@@ -1,6 +1,8 @@
 # Chainlink Monitoring & Alerting with Prometheus and Grafana
 This guide outlines how to monitor and alert on key health indicators of a Chainlink node using Prometheus and Grafana.
 
+![Alt text](./media/Chainlink-Node-Monitoring-Dashboard.png)
+
 # What This Dashboard Tracks
 The Grafana dashboard is designed to monitor the following critical metrics:
 - ETH Balance: Alerts when the Chainlink node's Ether balance falls below a defined threshold.
@@ -40,6 +42,8 @@ Note: The AuthToken is required to access the Chainlink metrics endpoint and mus
 - Type: Prometheus
 - URL: http://localhost:9090
 - Click Save & Test
+
+![Demo GIF](./media/Recording.gif)
 
 # Security Tips
 - Restrict access to Prometheus (9090) and Grafana (3000) using firewalls or by binding them to 127.0.0.1
