@@ -3,7 +3,7 @@ This guide outlines how to monitor and alert on key health indicators of a Chain
 
 ![Alt text](./media/Chainlink-Node-Monitoring-Dashboard.png)
 
-# Dashboard Monitoring Scope
+## Dashboard Monitoring Scope
 The Grafana dashboard is designed to monitor the following critical metrics:
 - **Wallet Balance Monitoring**  
   Tracks the node’s available Ether to ensure it can pay for gas and continue executing jobs.
@@ -27,7 +27,7 @@ The Grafana dashboard is designed to monitor the following critical metrics:
   Verifies whether the node and its monitoring stack are reachable and internally healthy.
 
 
-# Prerequisites
+## Prerequisites
 To set up Chainlink monitoring, you'll need the following tools:
 - **Prometheus** (default port: `9090`)  
   A powerful open-source monitoring system that collects and stores time-series data. It scrapes metrics from your Chainlink node and other services, making them available for analysis and alerting.
@@ -36,7 +36,7 @@ To set up Chainlink monitoring, you'll need the following tools:
   A flexible visualization platform that connects to Prometheus and displays your metrics through interactive dashboards. It also supports alerting, making it ideal for tracking node health and performance in real time.
 - A running Chainlink node exposing metrics on port 6688
 
-# Prometheus Configuration
+## Prometheus Configuration
 Edit your prometheus.yml file (typically located at /etc/prometheus/prometheus.yml) to include your Chainlink node:
 ```
 scrape_configs:
@@ -50,7 +50,7 @@ scrape_configs:
 ```
 Note: The AuthToken is required to access the Chainlink metrics endpoint and must match the value in your node’s secrets.toml.
 
-# Grafana Setup
+## Grafana Setup
 - Log in to Grafana (http://localhost:3000) with default credentials admin/admin
 - Change your password
 - Add a new data source:
@@ -60,7 +60,7 @@ Note: The AuthToken is required to access the Chainlink metrics endpoint and mus
 
 ![Demo GIF](./media/Recording.gif)
 
-# Security Best Practices
+## Security Best Practices
 
 Monitoring infrastructure often exposes sensitive metrics and interfaces. To ensure your Chainlink node and observability stack remain secure, follow these best practices:
 
@@ -94,7 +94,7 @@ Additional Tips
 Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
 
-# Metric Glossary
+## Metric Glossary
 This section explains key Prometheus metrics exposed by the Chainlink node and what they represent in your Grafana dashboard.
 
 | Metric | Description |
