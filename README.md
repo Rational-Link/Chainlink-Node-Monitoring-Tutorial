@@ -51,7 +51,7 @@ scrape_configs:
 Note: The AuthToken is required to access the Chainlink metrics endpoint and must match the value in your node’s secrets.toml.
 
 
-## Grafana Setup
+## Grafana Configuration
 - Log in to Grafana (http://localhost:3000) with default credentials admin/admin
 - Change your password
 - Add a new data source:
