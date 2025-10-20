@@ -60,17 +60,17 @@ Monitoring infrastructure often exposes sensitive metrics and interfaces. To ens
 - Add HTTPS encryption
 - Enforce authentication
 - Rate-limit requests
-Rotate AuthTokens Regularly
+ Rotate AuthTokens Regularly
 - The Chainlink node’s metrics endpoint requires an AuthToken (defined in secrets.toml) for Prometheus to scrape metrics.
 - Rotate this token periodically and update both:
 - secrets.toml in the Chainlink node
 - prometheus.yml under the authorization.credentials field
-Additional Tips
+ Additional Tips
 - Avoid exposing Prometheus or Grafana dashboards to the public internet.
 - Use Grafana’s built-in user management to enforce strong passwords and role-based access.
 - Monitor access logs for suspicious activity.
 - Keep Prometheus and Grafana updated to patch known vulnerabilities.
-Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
+ Reminder: Metrics can reveal internal job IDs, RPC health, and gas usage — all of which could be exploited if exposed publicly.
 
 
 # Metric Glossary
