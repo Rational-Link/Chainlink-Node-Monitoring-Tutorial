@@ -52,4 +52,26 @@ Note: The AuthToken is required to access the Chainlink metrics endpoint and mus
 
 
 
+# Metric Glossary
+This section explains key Prometheus metrics exposed by the Chainlink node and what they represent in your Grafana dashboard.
+
+| Metric | Description |
+|--------|-------------|
+| `eth_balance` | Current ETH balance of the Chainlink node. Critical for ensuring the node can pay for gas. |
+| `tx_manager_num_confirmed_transactions` | Total number of transactions successfully confirmed on-chain by the node. |
+| `tx_manager_num_unconfirmed_transactions` | Transactions sent but not yet confirmed. High values may indicate congestion or RPC issues. |
+| `tx_manager_num_replaced_transactions` | Transactions that were replaced due to nonce conflicts or gas price updates. |
+| `job_runs_total` | Total number of job runs executed by the node. Useful for tracking job activity. |
+| `job_runs_errors_total` | Number of job runs that resulted in errors. Helps identify failing jobs. |
+| `pipeline_runs_queued` | Number of full job pipelines waiting to start. Indicates job backlog. |
+| `pipeline_task_runs_queued` | Number of individual tasks within pipelines that are queued. Useful for spotting task-level delays. |
+| `gas_updater_all_gas_price_percentiles` | Current gas price percentiles (e.g., 50th, 90th, 99th). Useful for estimating transaction costs. |
+| `pool_rpc_node_polls_success` | Number of successful polling attempts to RPC nodes. Reflects RPC health. |
+| `pool_rpc_node_polls_error` | Number of failed polling attempts to RPC nodes. High values may indicate connectivity issues. |
+| `heads_received_total` | Total number of new block headers received. Indicates sync status with the blockchain. |
+| `heads_dropped_total` | Number of block headers dropped due to processing delays. Should be zero under normal conditions. |
+| `head_tracker_heads_in_queue` | Number of heads waiting to be processed. Should remain near zero. |
+| `head_tracker_callback_execution_time` | Time taken to process each head. Should be well below 1 second (ideally 100–300ms). |
+
+
 
