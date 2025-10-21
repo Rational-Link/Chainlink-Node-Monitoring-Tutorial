@@ -54,6 +54,5 @@ If docker is configured properly, Visit http://localhost:4040 — you should see
 - Click Save & Test
 
 ## Future Development Considerations To further enhance observability:
-- Use Pyroscope for continuous profiling and flame graph analysis
-- Leverage Prometheus queries to detect job anomalies
+- Expore Pyroscope features for robust continuous profiling and flame graph analysis and visualization
 - Improve logging to surface unexpected or harmful behavior
