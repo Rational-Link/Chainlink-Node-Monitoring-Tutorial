@@ -41,7 +41,11 @@ If docker is configured properly, Visit http://localhost:4040 — you should see
 ```bash
 docker logs <chainlink-node-name> | grep -i pyroscope
 ```
-And try to look for "Profiler started: sending data to http://host.docker.internal:4040"
+And try to look for 
+
+```
+Profiler started: sending data to http://host.docker.internal:4040
+```
 
 
 ### 4. Connect Pyroscope to Grafana
