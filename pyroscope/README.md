@@ -4,9 +4,9 @@ This guide walks through setting up continuous profiling for a Chainlink node us
 ![Alt text](../media/Pyroscope-Node-Monitoring-Dashboard.png)
 
 ## Prerequistites
-- Chainlink node running in Docker
-- Prometheus + Grafana already configured
-- Pyroscope server running locally or in Docker
+- Chainlink node running in Docker (port 6688)
+- Prometheus + Grafana already configured (port 9090 and 3000)
+- Pyroscope server running in Docker (default port 4040) 
 
 ## Step-by-Step Setup
 ### 1. Run Pyroscope Server
