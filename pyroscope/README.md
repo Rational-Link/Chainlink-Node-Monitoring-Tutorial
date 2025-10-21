@@ -35,8 +35,6 @@ AuthToken = "mysecuretokenforPyroscope"
 Use host.docker.internal if Pyroscope is on your host and Chainlink is in Docker. If both are in Docker, use the container name or Docker network alias.
 
 
-If docker is configured properly, Visit http://localhost:4040 — you should see chainlink-node in the dropdown.
-
 ### 3. Verify profiling is active
 ```bash
 docker logs <chainlink-node-name> | grep -i pyroscope
@@ -47,6 +45,7 @@ And try to look for
 Profiler started: sending data to http://host.docker.internal:4040
 ```
 
+If docker is configured properly, Visit http://localhost:4040 — you should see chainlink-node in the dropdown.
 
 ### 4. Connect Pyroscope to Grafana
 - Navigate to Grafana → Data Sources → Add
