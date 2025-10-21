@@ -1,7 +1,7 @@
 # High-Level Setup: Pyroscope for Chainlink Node in Docker
 This guide walks through setting up continuous profiling for a Chainlink node using Pyroscope, and visualizing performance data in Grafana alongside existing Prometheus metrics.
 
-![Alt text](./media/Pyroscope-Node-Monitoring-Dashboard.png)
+![Alt text](../media/Pyroscope-Node-Monitoring-Dashboard.png)
 
 # Prerequistites
 - Chainlink node running in Docker
