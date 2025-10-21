@@ -50,15 +50,6 @@ And try to look for "Profiler started: sending data to http://host.docker.intern
 - Set the URL to http://localhost:4040
 - Click Save & Test
 
-
-### 5. Correlate Profiling with Prometheus Metrics
-Use Grafana to overlay profiling data with key metrics such as:
-- Job execution latency
-- Gas consumption
-- Node CPU and memory usage
-This helps identify performance bottlenecks and correlate resource spikes with specific function calls.
-
-
 ## Future Development Considerations To further enhance observability:
 - Use Pyroscope for continuous profiling and flame graph analysis
 - Leverage Prometheus queries to detect job anomalies
