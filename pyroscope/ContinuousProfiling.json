@@ -1,0 +1,159 @@
+{
+"annotations": {
+"list": [
+{
+"builtIn": 1,
+"datasource": {
+"type": "grafana",
+"uid": "-- Grafana --"
+},
+"enable": true,
+"hide": true,
+"iconColor": "rgba(0, 211, 255, 1)",
+"name": "Annotations & Alerts",
+"type": "dashboard"
+}
+]
+},
+"editable": true,
+"fiscalYearStartMonth": 0,
+"graphTooltip": 0,
+"id": 8,
+"links": [],
+"liveNow": false,
+"panels": [
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"gridPos": {
+"h": 13,
+"w": 11,
+"x": 0,
+"y": 0
+},
+"id": 3,
+"targets": [
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"groupBy": [],
+"labelSelector": "{service_name=\"chainlink-node\"}",
+"profileTypeId": "block:delay:nanoseconds:contentions:count",
+"queryType": "profile",
+"refId": "A",
+"spanSelector": []
+}
+],
+"title": "block-delay",
+"type": "flamegraph"
+},
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"gridPos": {
+"h": 13,
+"w": 13,
+"x": 11,
+"y": 0
+},
+"id": 2,
+"targets": [
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"groupBy": [],
+"labelSelector": "{service_name=\"chainlink-node\"}",
+"profileTypeId": "process_cpu:cpu:nanoseconds:cpu:nanoseconds",
+"queryType": "profile",
+"refId": "A",
+"spanSelector": []
+}
+],
+"title": "Process CPU",
+"type": "flamegraph"
+},
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"gridPos": {
+"h": 12,
+"w": 11,
+"x": 0,
+"y": 13
+},
+"id": 1,
+"targets": [
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"groupBy": [],
+"labelSelector": "{service_name=\"chainlink-node\"}",
+"profileTypeId": "memory:alloc_objects:count:space:bytes",
+"queryType": "profile",
+"refId": "A",
+"spanSelector": []
+}
+],
+"title": "memory-alloc-objects",
+"transformations": [],
+"type": "flamegraph"
+},
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"gridPos": {
+"h": 12,
+"w": 13,
+"x": 11,
+"y": 13
+},
+"id": 4,
+"targets": [
+{
+"datasource": {
+"type": "grafana-pyroscope-datasource",
+"uid": "e77d695c-76f9-4ddc-90e2-715f11f962ca"
+},
+"groupBy": [],
+"labelSelector": "{service_name=\"chainlink-node\"}",
+"profileTypeId": "memory:inuse_objects:count:space:bytes",
+"queryType": "profile",
+"refId": "A",
+"spanSelector": []
+}
+],
+"title": "memory-inuse_objects",
+"type": "flamegraph"
+}
+],
+"refresh": "",
+"schemaVersion": 39,
+"tags": [],
+"templating": {
+"list": []
+},
+"time": {
+"from": "now-6h",
+"to": "now"
+},
+"timepicker": {},
+"timezone": "",
+"title": "Pyroscope - Chainlink Node",
+"uid": "b6eac730-a58d-457b-a484-c90e9fc60e59",
+"version": 2,
+"weekStart": ""
+}

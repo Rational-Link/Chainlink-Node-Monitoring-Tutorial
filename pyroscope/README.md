@@ -1,0 +1,64 @@
+# High-Level Setup: Pyroscope for Chainlink Node in Docker
+This guide walks through setting up continuous profiling for a Chainlink node using Pyroscope, and visualizing performance data in Grafana alongside existing Prometheus metrics.
+
+![Alt text](./media/Pyroscope-Node-Monitoring-Dashboard.png)
+
+# Prerequistites
+- Chainlink node running in Docker
+- Prometheus + Grafana already configured
+- Pyroscope server running locally or in Docker
+
+# Step-by-Step Setup
+1. Run Pyroscope Server
+```bash
+docker run -d \
+  --name pyroscope_server \
+  -p 127.0.0.1:4040:4040 \
+  grafana/pyroscope:latest \
+  server
+```
+This exposes Pyroscope’s UI and ingestion endpoint at http://localhost:4040.
+
+
+2. Configure Chainlink Node for Profiling
+Update your config.toml and secrets.toml with:
+```toml
+#config.toml
+[Pyroscope]
+ServerAddress = 'http://host.docker.internal:4040'
+Environment = 'testnet'
+
+#secrets.toml
+[Pyroscope]
+AuthToken = "mysecuretokenforPyroscope"
+```
+Use host.docker.internal if Pyroscope is on your host and Chainlink is in Docker. If both are in Docker, use the container name or Docker network alias.
+
+
+If docker is configured properly, Visit http://localhost:4040 — you should see chainlink-node in the dropdown.
+3. Verify profiling is active
+```bash
+docker logs <chainlink-node-name> | grep -i pyroscope
+```
+And try to look for "Profiler started: sending data to http://host.docker.internal:4040"
+
+
+4. Connect Pyroscope to Grafana
+- Navigate to Grafana → Data Sources → Add
+- Select Pyroscope
+- Set the URL to http://localhost:4040
+- Click Save & Test
+
+
+5. Correlate Profiling with Prometheus Metrics
+Use Grafana to overlay profiling data with key metrics such as:
+- Job execution latency
+- Gas consumption
+- Node CPU and memory usage
+This helps identify performance bottlenecks and correlate resource spikes with specific function calls.
+
+
+Future Development Considerations To further enhance observability:
+- Use Pyroscope for continuous profiling and flame graph analysis
+- Leverage Prometheus queries to detect job anomalies
+- Improve logging to surface unexpected or harmful behavior
