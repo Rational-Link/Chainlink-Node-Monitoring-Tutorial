@@ -17,7 +17,7 @@ docker run -d \
   grafana/pyroscope:latest \
   server
 ```
-This exposes Pyroscope’s UI and ingestion endpoint at http://localhost:4040.
+Bind ports to 127.0.0.1 to prevent external access. This exposes Pyroscope’s UI and ingestion endpoint at http://localhost:4040.
 
 
 ### 2. Configure Chainlink Node for Profiling
