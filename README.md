@@ -76,9 +76,9 @@ Restrict Metrics Endpoints
 Use Firewalls or Reverse Proxies
 - Configure firewalls (e.g., ufw, iptables) to block public access to ports 6688, 9090, and 3000.
 - Use reverse proxies like NGINX to:
-- Add HTTPS encryption
-- Enforce authentication
-- Rate-limit requests
+  - Add HTTPS encryption
+  - Enforce authentication
+  - Rate-limit requests
 
 Rotate AuthTokens Regularly
 - The Chainlink node’s metrics endpoint requires an AuthToken for Prometheus to scrape metrics. Rotate this token periodically and update both:
